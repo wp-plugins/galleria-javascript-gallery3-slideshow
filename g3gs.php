@@ -1,5 +1,7 @@
 <?php
+
 /*
+
 Plugin Name: Galleria Javascript Slideshow fed from Menalto Gallery3 Album
 
 Plugin URI: http://www.gregwhitehead.us/
@@ -7,8 +9,11 @@ Plugin URI: http://www.gregwhitehead.us/
 Description: Galleria Javascript Slideshow (http://galleria.io/) that is fed from an external Menalto Gallery3 (http://galleryproject.org/) album rss feed.  Creates a one page javascript slideshow with autoplay with time being able to be set via slidespeed or set to false for no autoplay.  Other settings able to be set through shortcode call. Includes all galleria javascript files needed.  [g3gs albumnum="81" slidespeed="3000" preload="2" showinfo="false" imagecrop="false" transition="fade" clicknext="true" pauseoninteraction="true" gallerypath="/g3/"]
 
 Version: 1.0
+
 Author: Greg Whitehead
+
 Author URI: http://www.gregwhitehead.us/
+
 */
 
 
@@ -35,29 +40,31 @@ add_action( 'wp_enqueue_scripts', 'gallery3galleriaslideshow_method' );
 
 
 
-
-
 function gallery3galleriaslideshow($atts) {
 
 	$pluginUrl = plugin_dir_url( __FILE__ );
 
 
 
-
 	extract(shortcode_atts(array(
 
 		'albumnum' => '1',
-
 		'slidespeed' => '2000',
-
 		'preload' => '2',
-		'showinfo' => 'false',
-		'imagecrop' => 'false',
-		'transition' => 'fade',
-		'clicknext' => 'true',
-		'pauseoninteraction' => 'true',
-		'gallerypath' => '/gallery/',
 
+		'showinfo' => 'false',
+
+		'imagecrop' => 'false',
+
+		'transition' => 'fade',
+
+		'clicknext' => 'true',
+
+		'pauseoninteraction' => 'true',
+		
+		'backgroundcolor' => '#fff',
+
+		'gallerypath' => '/gallery/',
 
 	), $atts));
 
@@ -73,7 +80,7 @@ function gallery3galleriaslideshow($atts) {
 
 				margin-top:30px;
 
-				background-color: #C9E0ED; /*rgb(0,0,0); */
+				background-color: '.$backgroundcolor.';
 
 				-webkit-box-shadow: 0px 0px 12px 3px rgba(153, 153, 153, .4);
 
@@ -82,7 +89,9 @@ function gallery3galleriaslideshow($atts) {
 				box-shadow: 0px 0px 12px 3px rgba(153, 153, 153, .4);
 
 			}
-
+		.galleria-container {
+				background-color: '.$backgroundcolor.';
+		}
 	 
 
 	</style>
@@ -114,49 +123,93 @@ function gallery3galleriaslideshow($atts) {
 			function getItems(earl){
 
 				jQuery.get(earl, {}, function(data){
+
 				var next = jQuery(data).find(\'atom\\\\:link[rel="next"]\').attr(\'href\');
+
 				//console.log(earl);
+
 				jQuery(data).find(\'item\').each(function(){
+
 					tmpImage = jQuery(this).children(\'media\\\\:group\').children(\'media\\\\:content\').first().attr(\'url\');
+
 					tmpBigImage = jQuery(this).children(\'media\\\\:group\').children(\'media\\\\:content\').last().attr(\'url\');
+
 					if (tmpImage == \'\' || tmpImage == null) tmpImage = jQuery(this).children(\'media\\\\:content\').attr(\'url\');
+
 					if (tmpBigImage == \'\' || tmpBigImage == null) tmpBig = jQuery(this).children(\'media\\\\:content\').attr(\'url\');
+
 					images.push({
+
 						image: tmpImage,
+
 						thumb: jQuery(this).children(\'media\\\\:thumbnail\').attr(\'url\'),
+
 						big: tmpBigImage ,
+
 						title: jQuery(this).children(\'title\').text(),
+
 						description: jQuery(this).children(\'description\').text(),
+
 						link: jQuery(this).children(\'link\').text()
+
 					});
+
 				});
+
 				if (next != undefined) {
+
 					getItems(next);
+
 				} else {
+
 					jQuery(\'#galleria\').galleria({
+
 						data_source: images,
+
 						showInfo: '.$showinfo.',
+
 						imageCrop: '.$imagecrop.',
+
 						transition: \''.$transition.'\',
+
 						clicknext:'.$clicknext.',
+
 				
+
 					autoplay:'.$slidespeed.',
+
 				
+
 					pauseOnInteraction:'.$pauseoninteraction.',
+
 				
+
 					preload: '.$preload.',
+
 				
+
 				
+
 					});
+
 					jQuery(\'#theButton, #pure\').show(\'slow\');
+
 					gallery = Galleria.get(0);
+
 					jQuery(\'.play a\').hover(function(){jQuery(this).addClass(\'over\');},function(){jQuery(this).removeClass(\'over\');});
+
 					jQuery(\'.play a\').on(\'click\', function(e){
+
 						e.preventDefault();
+
 						jQuery(\'#pure\').remove();
+
 						jQuery(this).parent().toggleClass(\'pause\').toggleClass(\'play\');
+
 						gallery.playToggle();
+
 					});
+
 				}
 
 				});
