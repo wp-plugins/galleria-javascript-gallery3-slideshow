@@ -112,8 +112,6 @@ function gallery3galleriaslideshow($atts) {
 
 			jQuery(document).ready(function(){
 
-				jQuery(\'title\').text(\'Galleria Classic Theme\');
-
 				Galleria.loadTheme(\''.$pluginUrl.'/galleria/themes/classic/galleria.classic.min.js\');
 
 				getItems(\''.$gallerypath.'index.php/rss/feed/gallery/album/'. $albumnum.'\');
