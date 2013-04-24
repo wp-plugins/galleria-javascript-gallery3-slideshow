@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<style>
+#galleria{
+            position: relative;
+            height:500px;
+            margin-top:30px;
+            background-color: rgb(0,0,0); 
+            -webkit-box-shadow: 0px 0px 12px 3px rgba(153, 153, 153, .4);
+            -moz-box-shadow: 0px 0px 12px 3px rgba(153, 153, 153, .4);
+            box-shadow: 0px 0px 12px 3px rgba(153, 153, 153, .4);
+        }
+        h1 {
+            font-family: 'Jockey One', sans-serif;
+            padding-top: 15px;
+            color:rgb(0,0,0);
+            font-size: 36px;
+            text-shadow: -1px 1px 30px rgba(255, 255, 255, 1),
+            -1px 1px 10px rgba(0, 0, 0, 1);
+        }
+        .play, .pause{
+            width:32px;
+            height:32px;
+            position: absolute;
+            bottom: -42px;
+            left: 384px;
+        }
+        .play a:after {
+            -moz-border-bottom-colors: none;
+            -moz-border-image: none;
+            -moz-border-left-colors: none;
+            -moz-border-right-colors: none;
+            -moz-border-top-colors: none;
+            background: none repeat scroll 0 0 transparent;
+            border-color: transparent transparent transparent #FFFFFF;
+            border-style: solid;
+            border-width: 8px;
+            left: 14px;
+            margin-top: 0;
+        }
+        .pause a:after {
+            -moz-border-bottom-colors: none;
+            -moz-border-image: none;
+            -moz-border-left-colors: none;
+            -moz-border-right-colors: none;
+            -moz-border-top-colors: none;
+            background: none repeat scroll 0 0 transparent;
+            border-color: #FFFFFF;
+            border-style: solid;
+            border-width: 0 3px;
+            height: 14px;
+            left: 12px;
+            margin-top: 2px;
+            width: 4px;
+        }
+        div a:before, div a:after {
+            background: rgb(0,0,0); /* Old browsers */
+            background: -moz-linear-gradient(top,  rgba(76,76,76,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(76,76,76,1)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  rgba(76,76,76,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  rgba(76,76,76,1) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  rgba(76,76,76,1) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
+            background: linear-gradient(top,  rgba(76,76,76,1) 0%,rgba(0,0,0,1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+            margin: -8px 0 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        div a.over:before, div a.over:after {
+            background: rgb(76,76,76); /* Old browsers */
+            background: -moz-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(44,44,44,1) 50%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(76,76,76,1)), color-stop(12%,rgba(89,89,89,1)), color-stop(25%,rgba(102,102,102,1)), color-stop(39%,rgba(71,71,71,1)), color-stop(50%,rgba(44,44,44,1)), color-stop(51%,rgba(0,0,0,1)), color-stop(60%,rgba(17,17,17,1)), color-stop(76%,rgba(43,43,43,1)), color-stop(91%,rgba(28,28,28,1)), color-stop(100%,rgba(19,19,19,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%); /* IE10+ */
+            background: linear-gradient(top, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313',GradientType=0 ); /* IE6-9 */
+
+        }
+        div:before, div:after, div a:before, div a:after {
+            content: "";
+            left: 0;
+            position: absolute;
+            top: 50%;
+        }
+        .play a:before, .pause a:before {
+            border-radius: 32px 32px 32px 32px;
+            height: 32px;
+            width: 32px;
+        }
+        #theButton {
+            display: none;
+        }
+        #pure {
+            display: none;
+            position: absolute;
+            bottom: -93px;
+            left: 393px;
+        }
+</style>
+
+    <div class="content">
+        <h1>Galleria Classic Theme</h1>
+        <div id="galleria"><img style="position:absolute;top:20px;right:20px;" src="/galleria/themes/classic/classic-loader.gif"/></div>
+        <div id="theButton" class="play"><a href="#"></a></div>
+        <!--<img id="pure" src="/galleria/images/pure.png"/>-->
+        <p class="powered-by">Powered by <a href="http://gallery.menalto.com/">G3</a> and <a href="http://galleria.aino.se/">Galleria</a></p>
+    </div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <script src="/galleria/galleria-1.2.8.min.js"></script>
+    <script>
+        var gallery, images = [];
+        $(document).ready(function(){
+            $('title').text('Galleria Classic Theme');
+            Galleria.loadTheme('themes/classic/galleria.classic.min.js');
+            getItems('/gallery/index.php/rss/feed/gallery/album/1');
+        });
+        function getItems(earl){
+            $.get(earl, {}, function(data){
+                var next = $(data).find('atom\\:link[rel="next"]').attr('href');
+                //console.log(earl);
+                $(data).find('item').each(function(){
+                    images.push({
+                        image: $(this).children('media\\:group').children('media\\:content').first().attr('url'),
+                        thumb: $(this).children('media\\:thumbnail').attr('url'),
+                        big: $(this).children('media\\:group').children('media\\:content').last().attr('url'),
+                        title: $(this).children('title').text(),
+                        description: $(this).children('description').text(),
+                        link: $(this).children('link').text()
+                    });
+                });
+                if (next != undefined) {
+                    getItems(next);
+                } else {
+                    $('#galleria').galleria({
+                        data_source: images,
+                        showInfo: false,
+                        imageCrop: true,
+                        autoplay: false,
+                        transition: 'fade'
+                    });
+                    $('#theButton, #pure').show('slow');
+                    gallery = Galleria.get(0);
+                    $('.play a').hover(function(){$(this).addClass('over');},function(){$(this).removeClass('over');});
+                    $('.play a').on('click', function(e){
+                        e.preventDefault();
+                        $('#pure').remove();
+                        $(this).parent().toggleClass('pause').toggleClass('play');
+                        gallery.playToggle();
+                    });
+                }
+            });
+            return
+        }
+    </script>
+</body>
+</html>
