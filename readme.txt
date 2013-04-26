@@ -25,6 +25,10 @@ e.g.
 
 == Frequently Asked Questions ==
 
+= What does this slideshow looklike? =
+
+http://www.gregwhitehead.us/celtic/ shows the http://www.gregwhitehead.us/g3/index.php/Celtic gallery in a slideshow.
+
 = Where can I get answers to questions? =
 
 You can email greg@billiardgreg.com to receive answers or go to http://www.gregwhitehead.us/wordpress-plugins/galleria-javascript-gallery3-slideshow/
