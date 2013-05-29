@@ -4,7 +4,7 @@ Donate link: http://www.billiardgreg.com/sponsors-and-links/
 Tags: slideshow, gallery, images, image, javascript, jquery, api, integration, gallery3, menalto, galleria
 Requires at least: 3.5
 Tested up to: 3.5.1
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,10 +40,16 @@ You can email greg@billiardgreg.com to receive answers or go to http://www.gregw
 
 == Changelog ==
 
+= 1.1 =
+* Bug fix of multiple slideshows on same page only showing first slideshow. Now id's are album based.  So as long as you are showing different albums it should show all properly.
+
 = 1.0 =
 * Initial Release of Plugin
 
 == Upgrade Notice ==
+
+= 1.1 =
+* Bug fix of multiple slideshows on same page only showing first slideshow. 
 
 = 1.0 =
 * Initial Release of Plugin
